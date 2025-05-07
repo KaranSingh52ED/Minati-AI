@@ -14,3 +14,12 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+
+
+// PORT=8080
+// JWT_SECRET=fkjgiufhrviuwgsisgivgsduvgsdaigsiof8sdo
+// AES_KEY=12345678901234567890123456789012
+// MAIL_USER=karansingh999703@gmail.com
+// MAIL_PASS=dtlh batw edfw lqjf
+
+// MONGO_URI=mongodb+srv://ed22b052:pwmwdGs2DbjT89xR@fintech.cztvt.mongodb.net/MinatiAI
