@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getProfile } from "../app/auth/authSlice";
-import { useNavigate } from "react-router-dom";
-import { Loader, AlertCircle, ShieldCheck } from "lucide-react";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfile } from '../app/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { Loader2, AlertCircle, ShieldCheck } from 'lucide-react';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, token, loading, error } = useSelector((state) => state.auth);
+  const { user, loading, error } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem('token');
     if (!storedToken) {
-      navigate("/login");
+      navigate('/login');
     } else {
       dispatch(getProfile());
     }
@@ -20,18 +20,16 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-        <Loader className="animate-spin h-8 w-8 text-indigo-600" />
-        <p className="ml-3 text-indigo-700 font-medium">
-          Loading your dashboard...
-        </p>
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800 text-white">
+        <Loader2 className="animate-spin h-6 w-6 mr-3 text-indigo-400" />
+        <p className="text-indigo-300 font-medium">Loading your dashboard...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex items-center justify-center h-screen bg-red-50 text-red-600">
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800 text-red-400">
         <AlertCircle className="w-6 h-6 mr-2" />
         <p className="font-medium">{error}</p>
       </div>
@@ -39,52 +37,53 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-slate-100 to-blue-50 px-4 py-8">
-      <div className="bg-white shadow-2xl rounded-3xl p-8 max-w-lg w-full transition-all duration-300 hover:shadow-blue-200">
-        <h1 className="text-3xl font-extrabold text-center text-indigo-700 mb-6">
-          👋 Welcome Back
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800 px-2 sm:px-4 py-6">
+      <div className="w-full  max-w-md bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 p-4 sm:p-8 animate-fade-in-up">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-center text-white mb-6 tracking-tight animate-slide-in-down">
+          👋 Welcome Back <span className="text-indigo-400">Minati AI</span>
         </h1>
 
         {user ? (
-          <div className="space-y-6 text-gray-800">
-            <div className="flex items-center justify-between">
-              <span className="font-semibold">Email:</span>
-              <span className="text-right">{user.email}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="font-semibold">Verified:</span>
-              <span
-                className={`text-sm font-medium px-2 py-1 rounded-full ${
-                  user.isVerified
-                    ? "bg-green-100 text-green-700"
-                    : "bg-red-100 text-red-700"
-                }`}
-              >
-                {user.isVerified ? "Verified ✅" : "Unverified ❌"}
-              </span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="font-semibold">Created:</span>
-              <span>{new Date(user.createdAt).toLocaleString()}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="font-semibold">Last Updated:</span>
-              <span>{new Date(user.updatedAt).toLocaleString()}</span>
-            </div>
+          <div className="space-y-5 text-sm sm:text-base text-white/90">
+            <InfoItem label="User ID" value={user._id} />
+            <InfoItem label="Full Name" value={user.fullname} />
+            <InfoItem label="Email" value={user.email} />
+            <InfoItem label="Contact" value={user.contact} />
+            <InfoItem
+              label="Verified"
+              value={
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    user.isVerified
+                      ? 'bg-green-600/20 text-green-400'
+                      : 'bg-red-600/20 text-red-400'
+                  }`}
+                >
+                  {user.isVerified ? 'Verified ✅' : 'Unverified ❌'}
+                </span>
+              }
+            />
 
-            <div className="flex justify-center mt-6">
-              <div className="flex items-center gap-2 bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold">
+            <div className="flex justify-center pt-4">
+              <div className="flex items-center gap-2 bg-indigo-500/10 text-indigo-300 px-3 py-1 rounded-full text-xs font-semibold">
                 <ShieldCheck size={16} />
                 Secure Session Active
               </div>
             </div>
           </div>
         ) : (
-          <p className="text-center text-gray-500">User data not available.</p>
+          <p className="text-center text-white/50">User data not available.</p>
         )}
       </div>
     </div>
   );
 };
+
+const InfoItem = ({ label, value }) => (
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0">
+    <span className="text-white font-medium">{label}:</span>
+    <span className="text-right break-all">{value}</span>
+  </div>
+);
 
 export default Dashboard;

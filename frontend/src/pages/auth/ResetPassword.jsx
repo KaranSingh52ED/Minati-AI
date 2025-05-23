@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { resetPassword } from "../../app/auth/authSlice";
-import { useNavigate, Link } from "react-router-dom";
-import { Mail, Key, Lock, Loader2 } from "lucide-react";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetPassword } from '../../app/auth/authSlice';
+import { useNavigate, Link } from 'react-router-dom';
+import { Mail, Key, Lock, Loader2 } from 'lucide-react';
 
 const ResetPassword = () => {
-  const [email, setEmail] = useState("");
-  const [otp, setOtp] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [otp, setOtp] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,26 +17,24 @@ const ResetPassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newPassword !== confirmPassword) {
-      alert("Passwords do not match");
+      alert('Passwords do not match');
       return;
     }
 
     dispatch(resetPassword({ email, otp, newPassword }))
       .unwrap()
-      .then(() => navigate("/login"));
+      .then(() => navigate('/login'));
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800 px-4">
-      <div className="w-full max-w-md bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 p-8 animate-fade-in-up">
-        <h2 className="text-3xl font-extrabold text-center text-white mb-8 tracking-tight animate-slide-in-down">
-          Reset <span className="text-indigo-400">Password</span>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800 px-2 sm:px-4">
+      <div className="w-full max-w-md bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 p-4 sm:p-8 animate-fade-in-up">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center text-white mb-6 sm:mb-8 tracking-tight animate-slide-in-down">
+          Reset <span className="text-indigo-400">Minati AI Password</span>
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div>
-            <label className="text-white text-sm font-medium block mb-2">
-              Email
-            </label>
+            <label className="text-white text-sm font-medium block mb-2">Email</label>
             <div className="flex items-center bg-white/10 rounded-lg border border-white/20">
               <span className="px-3 text-white">
                 <Mail size={18} />
@@ -52,9 +50,7 @@ const ResetPassword = () => {
             </div>
           </div>
           <div>
-            <label className="text-white text-sm font-medium block mb-2">
-              OTP
-            </label>
+            <label className="text-white text-sm font-medium block mb-2">OTP</label>
             <div className="flex items-center bg-white/10 rounded-lg border border-white/20">
               <span className="px-3 text-white">
                 <Key size={18} />
@@ -70,9 +66,7 @@ const ResetPassword = () => {
             </div>
           </div>
           <div>
-            <label className="text-white text-sm font-medium block mb-2">
-              New Password
-            </label>
+            <label className="text-white text-sm font-medium block mb-2">New Password</label>
             <div className="flex items-center bg-white/10 rounded-lg border border-white/20">
               <span className="px-3 text-white">
                 <Lock size={18} />
@@ -88,9 +82,7 @@ const ResetPassword = () => {
             </div>
           </div>
           <div>
-            <label className="text-white text-sm font-medium block mb-2">
-              Confirm Password
-            </label>
+            <label className="text-white text-sm font-medium block mb-2">Confirm Password</label>
             <div className="flex items-center bg-white/10 rounded-lg border border-white/20">
               <span className="px-3 text-white">
                 <Lock size={18} />
@@ -115,18 +107,14 @@ const ResetPassword = () => {
                 <Loader2 className="animate-spin w-4 h-4" /> Resetting...
               </>
             ) : (
-              "Reset Password"
+              'Reset Password'
             )}
           </button>
-          {message && (
-            <p className="text-green-400 text-sm text-center mt-2">{message}</p>
-          )}
-          {error && (
-            <p className="text-red-400 text-sm text-center mt-2">{error}</p>
-          )}
+          {message && <p className="text-green-400 text-sm text-center mt-2">{message}</p>}
+          {error && <p className="text-red-400 text-sm text-center mt-2">{error}</p>}
         </form>
         <div className="mt-6 text-center text-sm text-white/60">
-          Go to{" "}
+          Go to{' '}
           <Link to="/login" className="text-indigo-400 hover:underline">
             Login
           </Link>

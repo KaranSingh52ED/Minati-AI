@@ -1,9 +1,9 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: 'smtp.gmail.com',
   port: 465,
-  service: "gmail",
+  service: 'gmail',
   secure: true,
   auth: {
     user: process.env.MAIL_USER,
@@ -15,7 +15,7 @@ const sendOTP = async (email, otp) => {
   const mailOptions = {
     from: `"SecureAuth" <${process.env.MAIL_USER}>`,
     to: email,
-    subject: "Your OTP Code",
+    subject: 'Your OTP Code',
     text: `Your OTP code is: ${otp}. It expires in 5 minutes.`,
   };
 

@@ -1,5 +1,5 @@
-import React from "react";
-import { Github, Twitter, Linkedin, Rocket } from "lucide-react";
+import React from 'react';
+import { Github, Twitter, Linkedin, Rocket } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -16,23 +16,16 @@ const Footer = () => {
               </h1>
             </div>
             <p className="text-gray-400 max-w-sm">
-              Building intelligent, agentic solutions for the future of
-              AI-driven applications.
+              Building intelligent, agentic solutions for the future of AI-driven applications.
             </p>
           </div>
 
           {/* Navigation Links */}
           <div className="flex flex-col sm:flex-row gap-8 text-sm">
-            {[
-              "About Us",
-              "Services",
-              "Contact Us",
-              "Solutions",
-              "Dashboard",
-            ].map((item, index) => (
+            {['About Us', 'Services', 'Contact Us', 'Solutions', 'Dashboard'].map((item, index) => (
               <a
                 key={index}
-                href={`${item.toLowerCase().replace(/\s/g, "-")}`}
+                href={`${item.toLowerCase().replace(/\s/g, '-')}`}
                 className="relative group transition"
               >
                 <span className="text-white/80 group-hover:text-teal-400 transition duration-300">

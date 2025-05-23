@@ -1,5 +1,5 @@
-import React from "react";
-import { Bot, ServerCog, Globe2 } from "lucide-react";
+import React from 'react';
+import { Bot, ServerCog, Globe2 } from 'lucide-react';
 
 const SolutionsPage = () => {
   return (
@@ -7,32 +7,29 @@ const SolutionsPage = () => {
       <div className="max-w-6xl mx-auto text-center animate-fade-in-up space-y-12">
         <h2 className="text-4xl font-extrabold">Our Products</h2>
         <p className="text-lg text-white/70">
-          Explore Neuronix’s intelligent products built for performance and
-          scale.
+          Explore Minati AI’s intelligent products built for performance and scale.
         </p>
         <div className="grid md:grid-cols-3 gap-10">
           <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:scale-105 transition shadow-md">
             <Bot className="mx-auto text-cyan-400" size={32} />
-            <h4 className="mt-4 text-xl font-semibold">Neuronix Agent</h4>
+            <h4 className="mt-4 text-xl font-semibold">Minati Agent</h4>
             <p className="text-sm text-white/70 mt-2">
-              An autonomous AI agent for smart decision-making and task
-              automation.
+              An autonomous AI agent for smart decision-making and task automation by Minati AI.
             </p>
           </div>
           <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:scale-105 transition shadow-md">
             <ServerCog className="mx-auto text-orange-400" size={32} />
-            <h4 className="mt-4 text-xl font-semibold">Genomic Core</h4>
+            <h4 className="mt-4 text-xl font-semibold">Minati Core</h4>
             <p className="text-sm text-white/70 mt-2">
-              A distributed platform for processing and visualizing genomic
-              data.
+              A distributed platform for processing and visualizing data, powered by Minati AI.
             </p>
           </div>
           <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:scale-105 transition shadow-md">
             <Globe2 className="mx-auto text-green-400" size={32} />
             <h4 className="mt-4 text-xl font-semibold">API Hub</h4>
             <p className="text-sm text-white/70 mt-2">
-              Access powerful machine learning APIs for classification,
-              generation, and search.
+              Access powerful machine learning APIs for classification, generation, and search with
+              Minati AI.
             </p>
           </div>
         </div>

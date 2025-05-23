@@ -1,7 +1,7 @@
-require("dotenv").config();
+require('dotenv').config();
 
 if (!process.env.MONGO_URI || !process.env.JWT_SECRET) {
-  console.error("❌ Missing environment variables. Check .env file.");
+  console.error('❌ Missing environment variables. Check .env file.');
   process.exit(1);
 }
 
