@@ -42,8 +42,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong on the server.' });
 });
 
-// // 🔊 Start the Server
-// app.listen(PORT, () => {
-//   console.log(`✅ Server is running at: http://localhost:${PORT}`);
-// });
-module.exports = app;
+// 🔊 Start the Server
+app.listen(PORT, () => {
+  console.log(`✅ Server is running at: http://localhost:${PORT}`);
+});
